@@ -1,0 +1,3 @@
+nociones basicas (Euler errores)
+problemas suaves (Rk2,Rk4,Rk45(adaptativo))
+problemas con estructura (integradores simplecticos)
