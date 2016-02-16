@@ -41,7 +41,7 @@ double RK2_step(double step, double t, double y, derivative dev){
 
 double RK4_step(double step, double t, double y, derivative dev){
   double k1, k2, k3, k4;
-  double y_step;
+  double y_step1;
   k1 = dev(t,y);
   k2 = dev(t + step*0.5, y + k1*step*0.5);
   k3 = dev(t + step*0.5, y + k2*step*0.5);

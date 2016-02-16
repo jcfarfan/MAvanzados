@@ -1,0 +1,29 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+double generarPunto();
+double exponencial(double r);
+
+int main(void){
+  int npuntos = 10000;
+  double n,y;
+  for(i=0;i<npuntos;i++){
+    n = generarPunto();
+    y = exponencial(n)*drand48();
+    printf("%f \n", y);
+  }
+  return 0;
+}
+
+
+double generarPunto(){
+  double r;
+  r = drand48();
+  return r;
+}
+
+double exponencial(double r){
+  double y;
+  y = exp(r);
+}

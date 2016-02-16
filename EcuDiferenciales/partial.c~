@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+
+void iteration(float *u_future, float *u_present, float *u_past, int n_puntos, float r);
+void set_initial(float *array, int n_puntos, float delta_x);
+float *reserva(int n_puntos);
+void print_u(double *u, int n_points);
+
+int main(void){
+  float *u_past;
+  float *u_present;
+  int n_points=100;
+
+  u_present = reserva(n_points);
+  u_past = reserva(n_points);
+
+
+
+
+  return 0;
+}
+
+void iteration(float *u_future, float *u_present, float *u_past, int n_puntos, float r){
+  int i;
+  for(i=1;i<(n_puntos-1);i++){
+    u_future[i] = (2.0*(1.0-r*r))*u_present[i] - u_past[i] + (r*r)*(u_present[i+1] +  u_present[i-1]);
+  }
+}
+
+
+void set_initial(float *array, int n_puntos, float delta_x){
+  int i;
+  float x;
+  for(i=0;i<n_puntos;i++){
+    x = i * delta_x;
+    array[i] = exp(-((x-0.3)*(x-0.3))/0.01);
+  }
+  array[0] = 0.0;
+  array[n_puntos-1] = 0.0;
+}
+
+
+float *reserva(int n_puntos){
+  float *array;
+  int i;
+  if(!(array = malloc(n_puntos * sizeof(float)))){
+    printf("Problema en reserva\n");
+    exit(1);
+  }
+  for(i=0;i<n_puntos;i++){
+    array[i] = 0.0;
+  }
+  return array;
+}
+
+void print_u(double *u, int n_points){
+  int i;
+  for(i=0;i<n_points;i++){
+    printf("", u[i]);
+  }
+}
